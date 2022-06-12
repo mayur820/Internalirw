@@ -3,28 +3,10 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link rel="stylesheet" href="/css/bootstrap.min.v4.css" />
-<link rel="stylesheet" href="/css/bootstrap-datepicker3.min.css" />
-<link rel="stylesheet" href="/css/line-awesome.min.css" />
-<link rel="stylesheet" href="/css/theme-color.css" />
-<link rel="stylesheet" href="/css/app.min.css" />
-<link rel="stylesheet" href="/css/custom-body.css" />
+ 
 
+ 
 
-<script src="~/AngScripts/jquery-3.6.0.js"></script>
-<script src="~/AngScripts/jquery-3.6.0.min.js"></script>
-<script src="~/AngScripts/angular.js"></script>
-<script src="~/AngScripts/ngStorage.min.js"></script>
-<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.0.3.js"></script>
-<script src="~/js/select2.min.js"></script>
-<link rel="stylesheet" href="~/css/select2.min.css" />
-<script src="../js/popper.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/bootstrap-datepicker.min.js"></script>
-
-<script src="../js/metisMenu.min.js"></script>
-<script src="../js/simplebar.min.js"></script>
-<script src="../js/app.js"></script>
 <title>Demat Stock Transfer :: iRecord</title>
 
 <div ng-app="myApp" class="display_adds_parent">
@@ -62,7 +44,8 @@
 
                         <div class="col-sm-12 col-md-6 mb-3 d-flex">
                             <label class="mb-0">Date:</label>
-                            <input type="date" ng-model="detail.Date" class="form-control datepicker" data-date-format="dd-mm-yyyy" />
+                            <input type="text" placeholder="DD-MM-YYYY" id="Date" ng-model="detail.Date" class="form-control" data-date-format="dd-mm-yyyy" />
+
                         </div>
                         <div class="col-sm-12 col-md-6 mb-3 d-flex">
                             <label class="mb-0">Closure Cum Transer:</label>
@@ -227,20 +210,22 @@
         </div>
     </div>
 </div>
-<script src="~/AngScripts/DemateStockTransfer.js"></script>
 
 @section Scripts {
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-
-    <script src="~/AngularDataFunction/AngularDataFunction.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="../js/custom-script.js"></script>
     <script src="~/AngScripts/OpeningStock.js"></script>
-    <script src="~/js/select2.min.js"></script>
-    <link rel="stylesheet" href="~/css/select2.min.css" />
+    <script src="~/AngScripts/DemateStockTransfer.js"></script>
+
 }
 <script>
     $(document).ready(function () {
-
+       $("#Date").datepicker({
+            dateFormat: "dd-mm-yy",
+            changeMonth: true,
+            changeYear: true
+        });
         $(".select2").select2({
             maximumSelectionLength: 3
         });
