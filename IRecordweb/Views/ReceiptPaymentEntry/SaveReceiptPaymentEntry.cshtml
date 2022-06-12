@@ -2,30 +2,9 @@
     ViewBag.Title = "ManualEntry";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-@*--------*Angular JS* SECTION------*@
-<link href="~/Content/bootstrap-datepicker.min.css" rel="stylesheet" />
-<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
-
-<link rel="stylesheet" href="/css/bootstrap.min.v4.css" />
-<link rel="stylesheet" href="/css/line-awesome.min.css" />
-<link rel="stylesheet" href="/css/theme-color.css" />
-<link rel="stylesheet" href="/css/app.min.css" />
-<link rel="stylesheet" href="/css/custom-body.css" />
-
-<script src="~/AngScripts/jquery-3.6.0.js"></script>
-<script src="~/AngScripts/jquery-3.6.0.min.js"></script>
 <script src="~/AngScripts/angular.js"></script>
 <script src="~/AngScripts/ngStorage.min.js"></script>
 <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.0.3.js"></script>
-<script src="~/js/select2.min.js"></script>
-<link rel="stylesheet" href="~/css/select2.min.css" />
-<script src="../js/popper.min.js"></script>
-<script src="../js/metisMenu.min.js"></script>
-<script src="../js/simplebar.min.js"></script>
-<script src="../js/app.js"></script>
-
-@*---------*Angular JS* SECTION-----*@
 <style>
     .displayNO {
         display: none !important;
@@ -46,9 +25,7 @@
 
 
     }
-
-
-
+     
 }
 @*<body class="inner_body">*@
 <div ng-app="myApp" ng-controller="myctrn" ng-init="PageLoad()" id="" class="">
@@ -249,141 +226,65 @@
 </div>
 @section Scripts {
 
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
 
-    <script src="~/AngScripts/jquery-3.6.0.js"></script>
-    <script src="~/AngScripts/jquery-3.6.0.min.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-
-    <script src="~/AngularDataFunction/AngularDataFunction.js"></script>
+    <script src="../js/custom-script.js"></script>
     <script src="~/AngScripts/OpeningStock.js"></script>
-    <script src="~/js/select2.min.js"></script>
-    <link rel="stylesheet" href="~/css/select2.min.css" />
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/bootstrap-datepicker.min.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-}
-@if (ViewBag.Message != null)
-{
-    <script type="text/javascript">
+
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
                 window.onload = function () {
                     alert('@ViewBag.Message');
                 };
-    </script>
-}
+        </script>
+    }
 
-@*<script>
+    <script>
         $(document).ready(function () {
-            $("#txt_Date").datepicker({
-                dateFormat: "dd-M-yyyy",
-                changeMonth: true,
-                changeYear: true,
+            $(".select2").select2({
+                maximumSelectionLength: 3
             });
-        });
-    </script>*@
-
-@*<script>
-        $(function () {
-            $("#MultiSelectdropdown").chosen();
+            $("#CashBank").change(function () {
+                $.get("/ReceiptPaymentEntry/GetPaymode", { Name: $("#CashBank").val() },
+                    function (data) {
+                        $("#PaymentMode").empty();
+                        $.each(data, function (index, row) {
+                            $("#PaymentMode").append("<option value='" + row.TypeId + "'>" + row.Name + "</option>")
+                        });
+                    });
+            })
         });
     </script>
     <script>
-        $(function () {
-            $("#AmountAccount").chosen();
-        });
-    </script>*@
-<script>
-    $(document).ready(function () {
-        $(".select2").select2({
-            maximumSelectionLength: 3
-        });
-        $("#CashBank").change(function () {
-            $.get("/ReceiptPaymentEntry/GetPaymode", { Name: $("#CashBank").val() },
-                function (data) {
-                    $("#PaymentMode").empty();
-                    $.each(data, function (index, row) {
-                        $("#PaymentMode").append("<option value='" + row.TypeId + "'>" + row.Name + "</option>")
-                    });
-                });
-        })
-    });
-</script>
-<script>
-    $(document).ready(function () {
-        $("#CashBank").change(function () {
-            $.get("/ReceiptPaymentEntry/GetAccountList", { Name: $("#CashBank").val() },
-                function (data) {
-                    $("#cashbankaccount").empty();
-                    $.each(data, function (index, row) {
-                        $("#cashbankaccount").append("<option value='" + row.Code + "'>" + row.Name + "</option>")
-                    });
-                });
-        })
-    });
-</script>
-
-@*<script type="text/javascript">
         $(document).ready(function () {
-            $('#ChequeLabel').hide();
-            $('#Chequetext').hide();
-            $('#referenceLabel').hide();
-            $('#referencetext').hide();
-
-            $('#CashBank').change(function () {
-                if (this.value == 20) {
-                    $('#ChequeLabel').show();
-                    $('#Chequetext').show();
-                    $('#referenceLabel').hide();
-                    $('#referencetext').hide();
-                }
-                else if (this.value == 15) {
-                    $('#referenceLabel').show();
-                    $('#referencetext').show();
-                    $('#ChequeLabel').hide();
-                    $('#Chequetext').hide();
-                }
-                else {
-                    $('#ChequeLabel').hide();
-                    $('#Chequetext').hide();
-                    $('#referenceLabel').hide();
-                    $('#referencetext').hide();
-                }
-
-            });
+            $("#CashBank").change(function () {
+                $.get("/ReceiptPaymentEntry/GetAccountList", { Name: $("#CashBank").val() },
+                    function (data) {
+                        $("#cashbankaccount").empty();
+                        $.each(data, function (index, row) {
+                            $("#cashbankaccount").append("<option value='" + row.Code + "'>" + row.Name + "</option>")
+                        });
+                    });
+            })
         });
+    </script>
 
-    </script>*@
-<script>
-    function Cheque() {
-        var Cheque = document.getElementById('Cheque').value;
-        alert(Cheque);
-    }
-    function refernce() {
-        //  alert(555555);
-        var refernce = document.getElementById('refernce').value;
-        alert(refernce);
-    }
-</script>
-@*<script>
-        $.noConflict();
-        jQuery(document).ready(function ($) {
-            $('#txt_Date').attr('readonly', true);
-            $("#txt_Date").datepicker({
-                dateFormat: "dd-M-yyyy",
-                minDate: new Date(@Convert.ToDateTime(Convert.ToDateTime(Session["FinFromDate"].ToString()).ToString("yyyy/MM/dd")).Year, @Convert.ToDateTime(Convert.ToDateTime(Session["FinFromDate"].ToString()).ToString("yyyy/MM/dd")).Month - 1, @Convert.ToDateTime(Convert.ToDateTime(Session["FinFromDate"].ToString()).ToString("yyyy/MM/dd")).Day) ,
-                maxDate: new Date(@Convert.ToDateTime(Convert.ToDateTime(Session["FinToDate"].ToString()).ToString("yyyy/MM/dd")).Year, @Convert.ToDateTime(Convert.ToDateTime(Session["FinToDate"].ToString()).ToString("yyyy/MM/dd")).Month - 1, @Convert.ToDateTime(Convert.ToDateTime(Session["FinToDate"].ToString()).ToString("yyyy/MM/dd")).Day) ,
-                changeMonth: true,
-                changeYear: true
-            });
 
-        });
-    </script>*@
-@*<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>*@
-<script>
+    <script>
+        function Cheque() {
+            var Cheque = document.getElementById('Cheque').value;
+            alert(Cheque);
+        }
+        function refernce() {
+            //  alert(555555);
+            var refernce = document.getElementById('refernce').value;
+            alert(refernce);
+        }
+    </script>
+
+
+    <script>
         $.noConflict();
         jQuery(document).ready(function ($) {
             $('#txt_Date').attr('readonly', true);
@@ -397,10 +298,8 @@
             });
             });
         });
-</script>
-    }
-<script src="~/AngularDataFunction/AngularDataFunction.js"></script>
-<script src="~/AngScripts/ReceiptPaymentEntry.js"></script>
-@*</body>
+    </script>
 
-    </html>*@
+
+    <script src="~/AngScripts/ReceiptPaymentEntry.js"></script>
+}
