@@ -20,6 +20,8 @@ namespace IRecordweb
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/AngScripts/jquery-3.6.0.js",
+                      "~/AngScripts/jquery-3.6.0.min.js",
                       "~/Scripts/bootstrap.js",
                       "~/js/select2.min.js",
                       "~/js/jquery-3.5.1.min.js",
