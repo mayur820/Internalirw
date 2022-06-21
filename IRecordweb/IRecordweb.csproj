@@ -1047,18 +1047,6 @@
     <Content Include="Scripts\select2.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Views\UploadBhavCopy\SaveUploadBhavCopy.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1291,6 +1279,7 @@
     <Content Include="Views\Reports\GainLoss.cshtml" />
     <Content Include="Views\Shared\_LayoutTemp.cshtml" />
     <Content Include="Views\UserRights\Index.cshtml" />
+    <Content Include="Views\JVEntry\ViewJV1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1298,6 +1287,8 @@
     <Folder Include="Files\Logo\" />
     <Folder Include="fonts\lineawesome\" />
     <Folder Include="OpeningStock\" />
+    <Folder Include="SqlServerTypes\x64\" />
+    <Folder Include="SqlServerTypes\x86\" />
     <Folder Include="UploadedFiles\" />
     <Folder Include="Views\Narration\" />
     <Folder Include="Views\PaymentDemo\" />

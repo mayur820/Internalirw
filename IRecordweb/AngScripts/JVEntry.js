@@ -33,11 +33,7 @@ app.controller("myctrn", function ($scope, $http) {
         }, function (data) {
             alert("Error Occur During This Request" + posturl);
         });
-
-
-
-
-       
+         
     }
 
     $scope.GetHeadLevel = function () {

@@ -3077,7 +3077,7 @@ namespace IRecordweb.Controllers
                 con.Close();
                 con.Dispose();
             }
-            data.Brokercode = DT.Select("ID='" + data.ContractNoteId + "'").CopyToDataTable().Rows[0]["Member_Code"].ToString();
+          //  data.Brokercode = DT.Select("ID='" + data.ContractNoteId + "'").CopyToDataTable().Rows[0]["Member_Code"].ToString();
             Session["SaveBREntry"] = data;
             return Json("1", JsonRequestBehavior.AllowGet);
         }
@@ -3132,7 +3132,7 @@ namespace IRecordweb.Controllers
                 con.Close();
                 con.Dispose();
             }
-            data.Brokercode = DT.Select("ID='" + data.ContractNoteId + "'").CopyToDataTable().Rows[0]["Member_Code"].ToString();
+           // data.Brokercode = DT.Select("ID='" + data.ContractNoteId + "'").CopyToDataTable().Rows[0]["Member_Code"].ToString();
             Session["SaveBREntry"] = data;
             return Json("1", JsonRequestBehavior.AllowGet);
         }
