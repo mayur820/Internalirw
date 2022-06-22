@@ -3,36 +3,24 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link rel="stylesheet" href="/css/bootstrap.min.v4.css" />
-<link rel="stylesheet" href="/css/bootstrap-datepicker3.min.css" />
-<link rel="stylesheet" href="/css/line-awesome.min.css" />
-<link rel="stylesheet" href="/css/theme-color.css" />
-<link rel="stylesheet" href="/css/app.min.css" />
-<link rel="stylesheet" href="/css/custom-body.css" />
 
 
-<script src="~/AngScripts/jquery-3.6.0.js"></script>
-<script src="~/AngScripts/jquery-3.6.0.min.js"></script>
+
+
 <script src="~/AngScripts/angular.js"></script>
 <script src="~/AngScripts/ngStorage.min.js"></script>
 <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.0.3.js"></script>
-<script src="~/js/select2.min.js"></script>
-<link rel="stylesheet" href="~/css/select2.min.css" />
-<script src="../js/popper.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/bootstrap-datepicker.min.js"></script>
 
-<script src="../js/metisMenu.min.js"></script>
-<script src="../js/simplebar.min.js"></script>
-<script src="../js/app.js"></script>
-<script>
-    $.noConflict();
-    jQuery(document).ready(function ($) {
-        $(function () {
-            $("#txt_Date").datepicker();
-        });
-    });
-</script>
+@*<script src="~/js/select2.min.js"></script>
+    <link rel="stylesheet" href="~/css/select2.min.css" />
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap-datepicker.min.js"></script>
+
+    <script src="../js/metisMenu.min.js"></script>
+    <script src="../js/simplebar.min.js"></script>
+    <script src="../js/app.js"></script>*@
+
 @{
     if (Request.QueryString["TrnsNo"] != null)
     {
@@ -351,63 +339,73 @@
 
         });
     </script>*@
-<script>
-    $(document).ready(function () {
-        $(".select2").select2({
-            maximumSelectionLength: 3
-        });
-        $(".select2-hide_search").select2({
-            minimumResultsForSearch: Infinity
-        });
 
-    });
-</script>
 <script src="~/js_new/custom-script.js"></script>
-<script type="text/javascript">
-    function addLoadEvent(func) {
-        var oldonload = window.onload;
-        if (typeof window.onload != 'function') {
-            window.onload = func;
-        } else {
-            window.onload = function () {
-                if (oldonload) {
-                    oldonload();
-                }
-            }
-        }
-    }
-    addLoadEvent(setmenu('7'));
-    addLoadEvent(setentrymenu('1'));
-</script>
 
 @section Scripts {
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="../js/custom-script.js"></script>
+    @*<script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
 
-    <script src="~/AngularDataFunction/AngularDataFunction.js"></script>
+    @*<script src="~/AngularDataFunction/AngularDataFunction.js"></script>*@
     <script src="~/AngScripts/OpeningStock.js"></script>
-    <script src="~/js/select2.min.js"></script>
-    <link rel="stylesheet" href="~/css/select2.min.css" />
+    @*<script src="~/js/select2.min.js"></script>
+        <link rel="stylesheet" href="~/css/select2.min.css" />*@
 
-}
-<script src="~/AngScripts/JVEntry.js"></script>
 
-@*<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>*@
-<script>
-        $.noConflict();
+    <script src="~/AngScripts/JVEntry.js"></script>
+ 
+    <script>
+        //$.noConflict();
         jQuery(document).ready(function ($) {
             $('#txt_date').attr('readonly', true);
         $(function () {
             $("#txt_date").datepicker({
                 dateFormat: "dd-M-yy",
-                minDate: new Date(@Convert.ToDateTime(Convert.ToDateTime(Session["FinFromDate"].ToString()).ToString("yyyy/MM/dd")).Year, @Convert.ToDateTime(Convert.ToDateTime(Session["FinFromDate"].ToString()).ToString("yyyy/MM/dd")).Month - 1, @Convert.ToDateTime(Convert.ToDateTime(Session["FinFromDate"].ToString()).ToString("yyyy/MM/dd")).Day) ,
-                maxDate: new Date(@Convert.ToDateTime(Convert.ToDateTime(Session["FinToDate"].ToString()).ToString("yyyy/MM/dd")).Year, @Convert.ToDateTime(Convert.ToDateTime(Session["FinToDate"].ToString()).ToString("yyyy/MM/dd")).Month - 1, @Convert.ToDateTime(Convert.ToDateTime(Session["FinToDate"].ToString()).ToString("yyyy/MM/dd")).Day) ,
+                @*minDate: new Date(@Convert.ToDateTime(Convert.ToDateTime(Session["FinFromDate"].ToString()).ToString("yyyy/MM/dd")).Year, @Convert.ToDateTime(Convert.ToDateTime(Session["FinFromDate"].ToString()).ToString("yyyy/MM/dd")).Month - 1, @Convert.ToDateTime(Convert.ToDateTime(Session["FinFromDate"].ToString()).ToString("yyyy/MM/dd")).Day) ,
+                maxDate: new Date(@Convert.ToDateTime(Convert.ToDateTime(Session["FinToDate"].ToString()).ToString("yyyy/MM/dd")).Year, @Convert.ToDateTime(Convert.ToDateTime(Session["FinToDate"].ToString()).ToString("yyyy/MM/dd")).Month - 1, @Convert.ToDateTime(Convert.ToDateTime(Session["FinToDate"].ToString()).ToString("yyyy/MM/dd")).Day) ,*@
                 changeMonth: true,
                 changeYear: true
             });
             });
         });
-</script>
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(".select2").select2({
+                maximumSelectionLength: 3
+            });
+            $(".select2-hide_search").select2({
+                minimumResultsForSearch: Infinity
+            });
+
+        });
+    </script>
+    <script type="text/javascript">
+        function addLoadEvent(func) {
+            var oldonload = window.onload;
+            if (typeof window.onload != 'function') {
+                window.onload = func;
+            } else {
+                window.onload = function () {
+                    if (oldonload) {
+                        oldonload();
+                    }
+                }
+            }
+        }
+        addLoadEvent(setmenu('7'));
+        addLoadEvent(setentrymenu('1'));
+    </script>
+    <script>
+       // $.noConflict();
+        jQuery(document).ready(function ($) {
+            $(function () {
+                $("#txt_Date").datepicker();
+            });
+        });
+    </script>
+}
