@@ -5,9 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*<script src="~/AngScripts/jquery-3.6.0.js"></script>
-    <script src="~/AngScripts/jquery-3.6.0.min.js"></script>
-    <script src="~/AngScripts/angular.js"></script>*@
+
 
 <div class="display_ad display_ad_top text-center mb-3">
     <img src="https://via.placeholder.com/970x90.png/007BFF/FFFFFF?text=Irecord+Ads" alt="" />
@@ -38,7 +36,7 @@
 
                 @{
                     foreach (DataRow dr in ((Session["DT_ALL_MEMBER"] as DataTable).Select("Manager_ID='0'")))
-                        {
+                    {
 
                         <div class="accordion_title_box accordion-item">
                             <div class="accordion-button d-flex flex-wrap align-items-center">
@@ -56,7 +54,7 @@
                                     <div id="operator_List_1-1_@dr["id"]">
                                         @{
                                             foreach (DataRow drlevel2 in ((Session["DT_ALL_MEMBER"] as DataTable).Select("Manager_ID='" + dr["UserId"].ToString() + "' and Level_ID=2")))
-                                                {
+                                            {
                                                 <div class="accordion_title_box accordion-item">
                                                     <div class="accordion-button d-flex flex-wrap align-items-center">
                                                         <div class="arrow_box collapsed me-2 d-flex justify-content-center align-items-center" data-bs-target="#operator_L_1_1_@drlevel2["ID"]" data-bs-toggle="collapse" aria-expanded="false"></div>
@@ -103,7 +101,7 @@
 
                                                                 @{
                                                                     foreach (DataRow pg in ((Session["DT_ALL_VIEWBYPAGENAME"] as DataTable).Select("userid='" + drlevel2["UserId"].ToString() + "'")))
-                                                                        {
+                                                                    {
                                                                         <li class="d-flex flex-wrap align-items-center">
                                                                             <div class="flex_1">@pg["Page_Name"].ToString()</div>
 
@@ -135,7 +133,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </li>
-                                                                        }
+                                                                    }
                                                                 }
 
 
@@ -143,7 +141,7 @@
                                                             </ul>
                                                             @{
                                                                 foreach (DataRow drlevel3 in ((Session["DT_ALL_MEMBER"] as DataTable).Select("Manager_ID='" + drlevel2["UserId"].ToString() + "' and Level_ID=3")))
-                                                                    {
+                                                                {
 
                                                                     <div class="accordion_title_box accordion-item">
                                                                         <div class="accordion-button px-0 d-flex flex-wrap align-items-center">
@@ -182,7 +180,7 @@
                                                                                 <ul class="panel_inner_list d-flex flex-column">
                                                                                     @{
                                                                                         foreach (DataRow pg in ((Session["DT_ALL_VIEWBYPAGENAME"] as DataTable).Select("userid='" + drlevel3["UserId"].ToString() + "'")))
-                                                                                            {
+                                                                                        {
                                                                                             <li class="d-flex flex-wrap align-items-center">
                                                                                                 <div class="flex_1">@pg["Page_Name"].ToString()</div>
                                                                                                 <div class="rights_box d-flex flex-wrap align-items-center">
@@ -213,13 +211,13 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </li>
-                                                                                            }
+                                                                                        }
                                                                                     }
                                                                                 </ul>
                                                                                 @{
 
                                                                                     foreach (DataRow drlevel4 in ((Session["DT_ALL_MEMBER"] as DataTable).Select("Manager_ID='" + drlevel3["UserId"].ToString() + "' and Level_ID=4")))
-                                                                                        {
+                                                                                    {
                                                                                         <div id="accordion_L_4-1">
                                                                                             <div class="accordion_title_box accordion-item">
                                                                                                 <div class="accordion-button px-0 d-flex flex-wrap align-items-center">
@@ -255,7 +253,7 @@
                                                                                                         <ul class="panel_inner_list d-flex flex-column">
                                                                                                             @{
                                                                                                                 foreach (DataRow pg in ((Session["DT_ALL_VIEWBYPAGENAME"] as DataTable).Select("userid='" + @drlevel4["UserId"].ToString() + "'")))
-                                                                                                                    {
+                                                                                                                {
                                                                                                                     <li class="d-flex flex-wrap align-items-center">
                                                                                                                         <div class="flex_1">@pg["Page_Name"].ToString()</div>
                                                                                                                         <div class="rights_box d-flex flex-wrap align-items-center">
@@ -286,7 +284,7 @@
                                                                                                                             </div>
                                                                                                                         </div>
                                                                                                                     </li>
-                                                                                                                    }
+                                                                                                                }
                                                                                                             }
                                                                                                         </ul>
                                                                                                     </div>
@@ -294,7 +292,7 @@
                                                                                             </div>
                                                                                         </div>
 
-                                                                                                                    }
+                                                                                    }
                                                                                 }
 
                                                                                 <!-- Sub admin -->
@@ -302,14 +300,14 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                                                                    }
+                                                                }
                                                             }
                                                         </div>
 
 
                                                     </div>
                                                 </div>
-                                                                                                                    }
+                                            }
                                         }
 
 
@@ -318,7 +316,7 @@
                                 </div>
                             </div>
                         </div>
-                                                                                                                    }
+                    }
 
                 }
 
@@ -338,14 +336,14 @@
     //});
 
 
-    function UpldateAllUser(check, id, Col1, Col2,varid1,varid2) {
+    function UpldateAllUser(check, id, Col1, Col2, varid1, varid2) {
         if (check.checked) {
 
             $('.' + id + '').attr('checked', 'checked');
             $.ajax({
                 url: "/UserSecurity/UpdateAllValue/",
                 type: 'POST',
-                data: "{ 'varid1': '" + varid1 + "','varid2': '"+varid2+"','Col1': '" + Col1 + "','Col2': '" + Col2 + "','Status': '1' }",
+                data: "{ 'varid1': '" + varid1 + "','varid2': '" + varid2 + "','Col1': '" + Col1 + "','Col2': '" + Col2 + "','Status': '1' }",
                 //data: "{ 'id': '" + x + "' }",
                 async: true,
                 contentType: 'application/json',
@@ -363,10 +361,10 @@
 
         } else {
             $('.' + id + '').attr('checked', false);
-     $.ajax({
+            $.ajax({
                 url: "/UserSecurity/UpdateAllValue/",
                 type: 'POST',
-                data: "{ 'varid1': '" + varid1 + "','varid2': '"+varid2+"','Col1': '" + Col1 + "','Col2': '" + Col2 + "','Status': '0' }",
+                data: "{ 'varid1': '" + varid1 + "','varid2': '" + varid2 + "','Col1': '" + Col1 + "','Col2': '" + Col2 + "','Status': '0' }",
                 //data: "{ 'id': '" + x + "' }",
                 async: true,
                 contentType: 'application/json',
@@ -480,8 +478,7 @@
 </script>
 
 
-
-<script src="js/custom-script.js"></script>
+<script src="../js/custom-script.js"></script>
 <script type="text/javascript">
     function addLoadEvent(func) {
         var oldonload = window.onload;
@@ -497,6 +494,3 @@
     }
     addLoadEvent(setmenu('4'));
 </script>
-
-@*<script src="~/AngularDataFunction/AngularDataFunction.js"></script>
-    <script src="~/AngScripts/UserSecurityselect.js"></script>*@
