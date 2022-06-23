@@ -13,12 +13,11 @@
 @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.16/css/bootstrap-multiselect.css" integrity="sha512-DJ1SGx61zfspL2OycyUiXuLtxNqA3GxsXNinUX3AnvnwxbZ+YQxBARtX8G/zHvWRG9aFZz+C7HxcWMB0+heo3w==" crossorigin="anonymous" referrerpolicy="no-referrer" />*@
 
 <!-- <link href="~/Content/Multiselect.css" rel="stylesheet" />-->
-<script src="~/Scripts/jquery-1.12.4.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="~/Scripts/Multiselect.js"></script>
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="~/js/select2.min.js"></script>
+<script src="~/js/select2.min.js"></script>*@
 <style>
     .isdisabled {
         color: currentColor;
@@ -363,7 +362,7 @@
         </script>*@
     <script type="text/javascript">
 
-        $.noConflict();
+       // $.noConflict();
         jQuery(document).ready(function ($) {
             $('#ddlInvestmentType').multiselect({
                 placeholder: 'Select options',
