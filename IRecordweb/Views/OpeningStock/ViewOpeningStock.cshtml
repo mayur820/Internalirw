@@ -12,22 +12,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="/css/bootstrap.min.v4.css" />
-    <link rel="stylesheet" href="/css/bootstrap-datepicker3.min.css" />
-    <link rel="stylesheet" href="/css/select2.min.css" />
-    <link rel="stylesheet" href="/css/line-awesome.min.css" />
-    <link rel="stylesheet" href="/css/theme-color.css" />
-    <link rel="stylesheet" href="/css/app.min.css" />
-    <link rel="stylesheet" href="/css/custom-body.css" />
-    <script src="~/AngScripts/jquery-3.6.0.js"></script>
-    <script src="~/AngScripts/jquery-3.6.0.min.js"></script>
+
     <script src="~/AngScripts/angular.js"></script>
     <script src="~/AngScripts/ngStorage.min.js"></script>
     <link rel="stylesheet" href="~/css/loader-1.css">
     @*<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular.min.js"></script>*@
     <script src="~/AnguAutoComplete/angucomplete-alt.js"></script>
     <link href="~/AnguAutoComplete/angucomplete-alt.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/css/select2.min.css" />
     <title>Consultant Master :: iRecord</title>
     <style>
         .displayNO {
@@ -66,8 +57,6 @@
 
 
         }
-
-
 
     }
 </head>
@@ -136,7 +125,7 @@
                                         <label for="ddlscript1" class="mb-0">
                                             Script Name :
                                         </label>
-                                        <select class="form-select select2" ng-change="ChngSprt()" id="ddlscript" ng-model="details.ddlscript" ng-options="v.ID as v.NAME for v in scriptmaster"> 
+                                        <select class="form-select select2" ng-change="ChngSprt()" id="ddlscript" ng-model="details.ddlscript" ng-options="v.ID as v.NAME for v in scriptmaster">
                                             <option ng-option value="">Select Script</option>
                                         </select>
                                         @*<select class="form-select select2 " ng-change="ChngSprt()" id="ddlScript" ng-model="details.ddlScript" ng-options="x.Script_ID as x.SCRIPTNAME for x in Info_Script">
@@ -403,31 +392,10 @@
         </div>
     </div>
     @section Scripts {
-
-
-        <script src="../js/jquery-3.5.1.min.js"></script>
-
         <script src="~/js/jquery-migrate-3.3.2.js"></script>
-        <script src="~/js/jquery-ui.min.js"></script>
-
-        <script src="../js/popper.min.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
-        <script src="../js/metisMenu.min.js"></script>
-        <script src="../js/simplebar.min.js"></script>
-        <script src="../js/app.js"></script>
-
-        <script src="../js/bootstrap-datepicker.min.js"></script>
-        <script src="../js/select2.min.js"></script>
-        @*<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
-        <script src="~/Scripts/jquery-2.1.1.min.js"></script>
-        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-
-        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
         <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
         <script src="~/Scripts/bootstrap.min.js"></script>
-        <script src="~/Scripts/jquery-1.12.4.js"></script>
-        <script src="~/Scripts/jquery-1.12.4.min.js"></script>*@
-
+        <script src="../js/custom-script.js"></script>
         @if (ViewBag.Message != null)
         {
             <script type="text/javascript">
@@ -458,14 +426,14 @@
                 });
             </script>*@
         @*<script>
-            $.noConflict();
-            jQuery(document).ready(function ($) {
+                $.noConflict();
+                jQuery(document).ready(function ($) {
 
-                $(".select2").select2({
-                    maximumSelectionLength: 3
+                    $(".select2").select2({
+                        maximumSelectionLength: 3
+                    });
                 });
-            });
-        </script>*@
+            </script>*@
 
         <script>
             $(document).ready(function () {
@@ -555,11 +523,10 @@
                 });
             </script>*@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="/resources/demos/style.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-        <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+        @*<link rel="stylesheet" href="/resources/demos/style.css">*@
+
         <script>
-        $.noConflict();
+        //$.noConflict();
         jQuery(document).ready(function ($) {
             $('#txt_Date').attr('readonly', true);
         $(function () {
@@ -590,10 +557,9 @@
         });
         </script>
     }
-    <script src="~/AngularDataFunction/AngularDataFunction.js"></script>
-    <script src="../js/select2.min.js"></script>
+
     <script src="~/AngScripts/ViewOpeningStock.js"></script>
-    
+
 </body>
 
 </html>
