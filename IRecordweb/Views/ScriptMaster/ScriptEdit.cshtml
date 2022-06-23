@@ -10,11 +10,11 @@
 @*<link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />*@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.16/css/bootstrap-multiselect.css" integrity="sha512-DJ1SGx61zfspL2OycyUiXuLtxNqA3GxsXNinUX3AnvnwxbZ+YQxBARtX8G/zHvWRG9aFZz+C7HxcWMB0+heo3w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<link href="~/Content/Multiselect.css" rel="stylesheet" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="~/Scripts/Multiselect.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link href="~/Content/select2.min.css" rel="stylesheet" />
+
+
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="~/Content/select2.min.css" rel="stylesheet" />*@
 <style>
     .modal-dialog {
         right: auto;
@@ -228,19 +228,17 @@
 
 
 @section Scripts {
-    @*@Scripts.Render("~/bundles/jqueryval")*@
-
-    <!-- <link href="~/Content/bootstrap.css" rel="stylesheet" /> -->
     <link href="~/Content/chosen.css" rel="stylesheet" />
     <link href="~/Content/Multiselect.css" rel="stylesheet" />
-    <link href="~/Content/chosen.css" rel="stylesheet" />
-    <link href="~/Content/select2.min.css" rel="stylesheet" />.
+    <script src="~/Scripts/Multiselect.js"></script>
+
+
     <script>
 
         $(document).ready(function () {
 
             $("#SectorName").focus();
-            
+
             $(".select2").select2({
                 maximumSelectionLength: 3
             });
@@ -266,7 +264,7 @@
         });
     </script>
     <script>
-        $.noConflict();
+        //$.noConflict();
         jQuery(document).ready(function ($) {
             $('#Multiselect').multiselect({
                 placeholder: 'Select options',
@@ -299,21 +297,18 @@
             //});
         });
     </script>
-}
 
 
-<script src="~/Scripts/jquery-1.12.4.js"></script>
-<script src="~/Scripts/select2.full.min.js"></script>
 
-<script>
+    <script>
 
     $(document).ready(function () {
        // alert("@ViewBag.IndustryID.ToString()");
             $('#Multiselect').multiselect();
 
         });
-</script>
-<script type="text/javascript">
+    </script>
+    <script type="text/javascript">
 
 
 
@@ -370,19 +365,19 @@
         //$('#Multiselect').chosen();
         $('#Multiselect').multiselect();
     });
-</script>
+    </script>
 
-<script>
-    $(document).ready(function () {
-        // alert(1010);
-        var values = "Test,Prof,Off, Mutual Fund";
-        $.each(values.split(","), function (i, e) {
-            $("#scriptlist option[value='" + e + "']").prop("selected", true);
+    <script>
+        $(document).ready(function () {
+            // alert(1010);
+            var values = "Test,Prof,Off, Mutual Fund";
+            $.each(values.split(","), function (i, e) {
+                $("#scriptlist option[value='" + e + "']").prop("selected", true);
+            });
         });
-    });
-</script>
+    </script>
 
-
+}
 
 <!-- <script src="~/Scripts/bootstrap.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
