@@ -131,89 +131,91 @@
 @section Scripts {
     <script src="~/Scripts/jquery.validate.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="../js/custom-script.js"></script>
     <script src="~/AngScripts/OpeningStock.js"></script>
 
-<script>
-    $("#BankNameId").change(function () {
+    <script>
+        $("#BankNameId").change(function () {
 
-        var ddlCustomers = $("#BankConfig");
-        ddlCustomers.empty();
-        ddlCustomers.append("<option value=''>--Please Select--</option>");
+            var ddlCustomers = $("#BankConfig");
+            ddlCustomers.empty();
+            ddlCustomers.append("<option value=''>--Please Select--</option>");
 
-        $.get("/BankStatementImport/ViewFormate", { BankId: $("#BankNameId").val() },
-            function (data) {
+            $.get("/BankStatementImport/ViewFormate", { BankId: $("#BankNameId").val() },
+                function (data) {
 
-                $.each(data, function (index, row) {
-                    ddlCustomers.append("<option value='" + row.TypeId + "'>" + row.Name + "</option>")
+                    $.each(data, function (index, row) {
+                        ddlCustomers.append("<option value='" + row.TypeId + "'>" + row.Name + "</option>")
+                    });
                 });
+
+
+            //$.ajax({    //create an ajax request to display.php
+            //    type: "GET",
+            //    url: "BankStatementImport/ViewFormate?BankId=" + $("#BankNameId").val(),
+            //    dataType: "json",   //expect html to be returned
+            //    success: function (response) {
+            //        alert(response);
+            //      //  $("#responsecontainer").html(response);
+            //        //alert(response);
+            //    }
+            //});
+
+
+
+            //$.ajax({
+            //    type: "get", url: "BankStatementImport/ViewFormate?BankId=" + $("#BankNameId").val(), dataType: "json", contentType: "application/json", success: function (res) {
+            //        $.each(res.d, function (data, value) {
+
+            //            ddlCustomers.append($("<option></option>").val(value.ID).html(value.NAME));
+            //        })
+            //    }
+
+            //});
+
+        });
+
+
+        // PopulateDropDownList();
+
+        function PopulateDropDownList() {
+            //Build an array containing Customer records.
+            var customers = [
+                { CustomerId: 1, Name: "John Hammond", Country: "United States" },
+                { CustomerId: 2, Name: "Mudassar Khan", Country: "India" },
+                { CustomerId: 3, Name: "Suzanne Mathews", Country: "France" },
+                { CustomerId: 4, Name: "Robert Schidner", Country: "Russia" }
+            ];
+
+            var ddlCustomers = $("#BankConfig");
+            ddlCustomers.empty();
+            ddlCustomers.append("<option value=''>--Please Select--</option>");
+            $(customers).each(function () {
+                var option = $("<option />");
+
+                //Set Customer Name in Text part.
+                option.html(this.Name);
+
+                //Set Customer CustomerId in Value part.
+                option.val(this.CustomerId);
+
+                //Add the Option element to DropDownList.
+                ddlCustomers.append(option);
             });
+        }
+    </script>
 
-
-        //$.ajax({    //create an ajax request to display.php
-        //    type: "GET",
-        //    url: "BankStatementImport/ViewFormate?BankId=" + $("#BankNameId").val(),
-        //    dataType: "json",   //expect html to be returned
-        //    success: function (response) {
-        //        alert(response);
-        //      //  $("#responsecontainer").html(response);
-        //        //alert(response);
-        //    }
-        //});
-
-
-
-        //$.ajax({
-        //    type: "get", url: "BankStatementImport/ViewFormate?BankId=" + $("#BankNameId").val(), dataType: "json", contentType: "application/json", success: function (res) {
-        //        $.each(res.d, function (data, value) {
-
-        //            ddlCustomers.append($("<option></option>").val(value.ID).html(value.NAME));
-        //        })
-        //    }
-
-        //});
-
-    });
-
-
-    // PopulateDropDownList();
-
-    function PopulateDropDownList() {
-        //Build an array containing Customer records.
-        var customers = [
-            { CustomerId: 1, Name: "John Hammond", Country: "United States" },
-            { CustomerId: 2, Name: "Mudassar Khan", Country: "India" },
-            { CustomerId: 3, Name: "Suzanne Mathews", Country: "France" },
-            { CustomerId: 4, Name: "Robert Schidner", Country: "Russia" }
-        ];
-
-        var ddlCustomers = $("#BankConfig");
-        ddlCustomers.empty();
-        ddlCustomers.append("<option value=''>--Please Select--</option>");
-        $(customers).each(function () {
-            var option = $("<option />");
-
-            //Set Customer Name in Text part.
-            option.html(this.Name);
-
-            //Set Customer CustomerId in Value part.
-            option.val(this.CustomerId);
-
-            //Add the Option element to DropDownList.
-            ddlCustomers.append(option);
+    <script>
+        $(document).ready(function () {
+            $("#BankNameId").focus();
+            $(".select2").select2({
+                maximumSelectionLength: 3
+            });
         });
-    }
-</script>
-
-<script>
-    $(document).ready(function () {
-        $("#BankNameId").focus();
-        $(".select2").select2({
-            maximumSelectionLength: 3
-        });
-    });
-</script>
-<script>
+    </script>
+    <script>
        // $.noConflict();
         jQuery(document).ready(function ($) {
 
@@ -235,5 +237,5 @@
                 changeYear: true
             });
         });
-</script>
-    }
+    </script>
+}
