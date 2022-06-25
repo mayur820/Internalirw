@@ -31,6 +31,14 @@ namespace IRecordweb
                 "~/Scripts/bootstrap.min.v4.js",
                 "~/js/simplebar.min.js"
                 ));
+            bundles.Add(new ScriptBundle("~/bundles/piechart").Include(
+            "~/js/amchart/core.js",
+            "~/js/amchart/charts.js",
+            "~/js/amchart/animated.js",
+            "~/js/amchart/chart-data-1.js",
+            "~/js/amchart/chart-data-2.js",
+            "~/js/amchart/chart-data-3.js"
+            ));
 
             bundles.Add(new ScriptBundle("~/bundles/basescript1").Include(
                "~/Scripts/metisMenu.min.js",
