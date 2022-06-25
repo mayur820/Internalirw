@@ -10,16 +10,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
 
-    <link rel="stylesheet" href="/css/bootstrap.min.v4.css" />
-    <link rel="stylesheet" href="/css/bootstrap-datepicker3.min.css" />
-    <link rel="stylesheet" href="/css/select2.min.css" />
-    <link rel="stylesheet" href="/css/line-awesome.min.css" />
-    <link rel="stylesheet" href="/css/theme-color.css" />
-    <link rel="stylesheet" href="/css/app.min.css" />
-    <link rel="stylesheet" href="/css/custom-body.css" />
-    <script src="~/AngScripts/jquery-3.6.0.js"></script>
-    <script src="~/AngScripts/jquery-3.6.0.min.js"></script>
     <script src="~/AngScripts/angular.js"></script>
     <script src="~/AngScripts/ngStorage.min.js"></script>
     <link rel="stylesheet" href="~/css/loader-1.css">
@@ -160,7 +152,7 @@
                                             <option value="PA-PUT">PE-PUT</option>
                                         </select>
                                     </div>
-                                   
+
 
                                     <div id="div_HoldingType" class="col-sm-12 col-md-6 mb-3 d-flex">
                                         <label for="ddlHoldingType" class="mb-0">Holding Type:</label>
@@ -172,12 +164,12 @@
                                     </div>
                                     <div id="div_ClientCode" class="col-sm-12 col-md-6 mb-3 d-flex">
                                         <label for="txt_ClientCode" class="mb-0">Client Code:</label>
-                                        <input type="text" id="txt_ClientCode" ng-model="txt_ClientCode" class="form-control" placeholder="Enter Client Code" /> 
+                                        <input type="text" id="txt_ClientCode" ng-model="txt_ClientCode" class="form-control" placeholder="Enter Client Code" />
                                         <span>{{ClientCodeInfo}}</span>
                                     </div>
                                     <div id="div_SettlementDate" class="col-sm-12 col-md-6 mb-3 d-flex">
                                         <label for="txt_SettlementDate" class="mb-0">Settlement Date:</label>
-                                        <input type="text" id="txt_SettlementDate" ng-model="txt_SettlementDate" class="form-control datepicker"  data-date-format="dd-mm-yyyy" placeholder="DD-MM-YYYY" />
+                                        <input type="text" id="txt_SettlementDate" ng-model="txt_SettlementDate" class="form-control datepicker" data-date-format="dd-mm-yyyy" placeholder="DD-MM-YYYY" />
                                     </div>
                                     <div id="div_ExchangeType" class="col-sm-12 col-md-6 mb-3 d-flex">
                                         <label for="ddlExchangeType" class="mb-0">Exchange Type:</label>
@@ -190,18 +182,18 @@
                                     <div id="div_ISIN" class="col-sm-12 col-md-6 mb-3 d-flex">
                                         <label for="txt_ISIN" class="mb-0">ISIN No:</label>
                                         <input type="text" id="txt_ISIN" ng-model="ISINInfo.txt_ISIN" class="form-control" placeholder="Enter ISIN" />
-                                   @*<span id="txt_ISIN" ng-model="txt_ISIN" class="form-control">{{ISIN}}</span>*@
+                                        @*<span id="txt_ISIN" ng-model="txt_ISIN" class="form-control">{{ISIN}}</span>*@
                                         <span>{{ISINInfo}}</span>
                                     </div>
                                     <div id="div_OrderNo" class="col-sm-12 col-md-6 mb-3 d-flex">
                                         <label for="txt_OrderNo" class="mb-0">Order No:</label>
                                         <input type="text" id="txt_OrderNo" ng-model="txt_OrderNo" class="form-control" placeholder="Enter Order No" />
-                                  
-                                     </div>
+
+                                    </div>
                                     <div id="div_OrderTime" class="col-sm-12 col-md-6 mb-3 d-flex">
                                         <label for="txt_OrderTime" class="col-sm-12 col-md-6 mb-3 d-flex">Order Time:</label>
-                                        <input id="txt_OrderTime" ng-model="txt_OrderTime" type="text" class="form-control"  placeholder="Enter Order Time" />
-                                     </div>
+                                        <input id="txt_OrderTime" ng-model="txt_OrderTime" type="text" class="form-control" placeholder="Enter Order Time" />
+                                    </div>
                                     <div id="div_TradeNo" class="col-sm-12 col-md-6 mb-3 d-flex">
                                         <label for="txt_TradeNo" class="mb-0">Trade No:</label>
                                         <input type="text" id="txt_TradeNo" ng-model="txt_TradeNo" class="form-control" placeholder="Enter Trade No" />
@@ -505,21 +497,16 @@
         </div>
     </form>
 
-    <script src="../js/jquery-3.5.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
 
-    <script src="../js/metisMenu.min.js"></script>
-    <script src="../js/simplebar.min.js"></script>
-    <script src="../js/app.js"></script>
 
-    <script src="../js/bootstrap-datepicker.min.js"></script>
-    <script src="../js/select2.min.js"></script>
-    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-2.1.1.min.js"></script>
-    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-    <script>
-        $.noConflict();
+    @section Scripts {
+
+
+        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="../js/custom-script.js"></script>
+        <script>
+        //$.noConflict();
         jQuery(document).ready(function ($) {
             $('#txt_SettlementDate').attr('readonly', true);
             $("#txt_SettlementDate").datepicker({
@@ -548,38 +535,38 @@
             });
 
         });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $(".select2").select2({
-                maximumSelectionLength: 3
-            });
-            $(".select2-hide_search").select2({
-                minimumResultsForSearch: Infinity
-            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $(".select2").select2({
+                    maximumSelectionLength: 3
+                });
+                $(".select2-hide_search").select2({
+                    minimumResultsForSearch: Infinity
+                });
 
-        });
-    </script>
+            });
+        </script>
 
-    <script src="../js/custom-script.js"></script>
-    <script type="text/javascript">
-        function addLoadEvent(func) {
-            var oldonload = window.onload;
-            if (typeof window.onload != 'function') {
-                window.onload = func;
-            } else {
-                window.onload = function () {
-                    if (oldonload) {
-                        oldonload();
+        <script type="text/javascript">
+            function addLoadEvent(func) {
+                var oldonload = window.onload;
+                if (typeof window.onload != 'function') {
+                    window.onload = func;
+                } else {
+                    window.onload = function () {
+                        if (oldonload) {
+                            oldonload();
+                        }
                     }
                 }
             }
+            addLoadEvent(setmenu('7'));
+            addLoadEvent(setentrymenu('2'));
+        </script>
+
+        <script src="~/AngScripts/ManualEntry.js"></script>
         }
-        addLoadEvent(setmenu('7'));
-        addLoadEvent(setentrymenu('2'));
-    </script>
-    <script src="~/AngularDataFunction/AngularDataFunction.js"></script>
-    <script src="~/AngScripts/ManualEntry.js"></script>
-</body>
+    </body>
 
 </html>
