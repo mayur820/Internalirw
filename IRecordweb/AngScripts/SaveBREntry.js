@@ -11,7 +11,7 @@ app.controller("myctrn", function ($scope, $http, $localStorage, $sessionStorage
         $scope.GetAllDemate();
         $scope.GetAllConsultant();
         //$scope.GetAllBroker();
-        $scope.Brokers  = [];
+        $scope.Brokers = [];
         $scope.demat_with_broker = [];
         $scope.Single_demats = [];
         $scope.Single_Bank = [];
@@ -21,14 +21,14 @@ app.controller("myctrn", function ($scope, $http, $localStorage, $sessionStorage
         $scope.details = [];
 
         $scope.btntext = "Save";
-    
+
         //fnGetDataUsingGetRequestWithModel("/BrokerBillEntry/GetAllBroker", "Brokers", $scope, $http);
         $http({
             method: "get",
             url: "/BrokerBillEntry/GetAllBroker"
         }).then(function (response) {
             $scope.Brokers = JSON.parse(response.data);
-            $scope.Fn_GetAsDefaultSetting(); 
+            $scope.Fn_GetAsDefaultSetting();
         }, function (data) {
             //deferred.reject({ message: "Really bad" });
             alert("Error Occur During This Request" + geturl);
@@ -65,8 +65,10 @@ app.controller("myctrn", function ($scope, $http, $localStorage, $sessionStorage
         }
         reader.readAsDataURL(img);
     };
-    
-    $scope.showhidefn = function () {
+
+
+    $("#ddlInvestmentType").on("change", function () {
+        $scope.ddlInvestmentType = $(this).val();
         if ($scope.ddlInvestmentType == "0" || $scope.ddlInvestmentType == "1") {
             $("#Demat_Ac_Id").prop("disabled", false);
             $("#ddlHoldingType").prop("disabled", false);
@@ -76,7 +78,19 @@ app.controller("myctrn", function ($scope, $http, $localStorage, $sessionStorage
             $("#ddlHoldingType").prop("disabled", true);
         }
         $scope.Fn_GetAsDefaultSetting();
-    }
+    });
+
+    //$scope.showhidefn = function () {
+    //    if ($scope.ddlInvestmentType == "0" || $scope.ddlInvestmentType == "1") {
+    //        $("#Demat_Ac_Id").prop("disabled", false);
+    //        $("#ddlHoldingType").prop("disabled", false);
+    //    }
+    //    else {
+    //        $("#Demat_Ac_Id").prop("disabled", true);
+    //        $("#ddlHoldingType").prop("disabled", true);
+    //    }
+    //    $scope.Fn_GetAsDefaultSetting();
+    //}
     $scope.ngclickDropdown = function () {
 
         //   alert($scope.ContractNoteId);
@@ -90,6 +104,7 @@ app.controller("myctrn", function ($scope, $http, $localStorage, $sessionStorage
         }
     }
     $scope.BrokerOnchange = function () {
+        debugger;
         for (var i = 0; i <= $scope.Brokers.length; i++) {
 
             if ($scope.ddlBroker === $scope.Brokers[i].ID) {
@@ -115,7 +130,7 @@ app.controller("myctrn", function ($scope, $http, $localStorage, $sessionStorage
             return false;
         }
 
-    
+
         let photo = document.getElementById("contractnotefile").files[0];
         if (typeof photo !== 'undefined') {
 
@@ -141,41 +156,48 @@ app.controller("myctrn", function ($scope, $http, $localStorage, $sessionStorage
     };
 
 
-      $scope.getConsultant = function () {
+    $scope.getConsultant = function () {
         fnGetDataUsingGetRequestWithModel("/BrokerBillEntry/GetConsultant", "Info_Consultant", $scope, $http);
     }
-    $scope.bindbills = function () {
 
-
-        //$http({
-        //    method: "get",
-        //    url: "/BrokerBillEntry/GetAllBILLS"
-        //}).then(function (response) {
-        //    $scope.BILLS = JSON.parse(response.data);
-
-        //   // $scope.ContractNoteId = "912";
-        //}, function (data) {
-        //    //deferred.reject({ message: "Really bad" });
-        //    alert("Error Occur During This Request" + geturl);
-        //}).then(function() {
-        //    //$("#ContractNoteId1").val("912");
-
-        //})
-
+    $("#ddlBroker").on("change", function () {
+        $scope.ddlBroker = $(this).val();
         fnGetDataUsingGetRequestWithModel("/BrokerBillEntry/GetAllBILLS?Invtype=" + $("#ddlInvestmentType").val() + "&&BrokerID=" + $("#ddlBroker").val(), "BILLS", $scope, $http);
         $scope.BrokerOnchange();
-    }
+    });
+
+    //$scope.bindbills = function () {
+
+
+    //    //$http({
+    //    //    method: "get",
+    //    //    url: "/BrokerBillEntry/GetAllBILLS"
+    //    //}).then(function (response) {
+    //    //    $scope.BILLS = JSON.parse(response.data);
+
+    //    //   // $scope.ContractNoteId = "912";
+    //    //}, function (data) {
+    //    //    //deferred.reject({ message: "Really bad" });
+    //    //    alert("Error Occur During This Request" + geturl);
+    //    //}).then(function() {
+    //    //    //$("#ContractNoteId1").val("912");
+
+    //    //})
+
+    //    fnGetDataUsingGetRequestWithModel("/BrokerBillEntry/GetAllBILLS?Invtype=" + $("#ddlInvestmentType").val() + "&&BrokerID=" + $("#ddlBroker").val(), "BILLS", $scope, $http);
+    //    $scope.BrokerOnchange();
+    //}
     $scope.GetAllConsultant = function () {
         fnGetDataUsingGetRequestWithModel("/BrokerBillEntry/GetAllConsultant", "Consultants", $scope, $http);
 
     }
     $scope.GetDemate = function () {
         fnGetDataUsingGetRequestWithModel("/BrokerBillEntry/GetDemate", "Info_Demate", $scope, $http);
-       //alert(11);
+        //alert(11);
     }
     $scope.GetAllDemate = function () {
         fnGetDataUsingGetRequestWithModel("/BrokerBillEntry/GetAllDemate", "Demates", $scope, $http);
-       // console.log($scope.Demates);
+        // console.log($scope.Demates);
     }
     $scope.getBroker = function () {
         fnGetDataUsingGetRequestWithModel("/BrokerBillEntry/GetBroker", "Info_Broker", $scope, $http);
@@ -199,7 +221,7 @@ app.controller("myctrn", function ($scope, $http, $localStorage, $sessionStorage
                 url: "/BrokerBillEntry/GetAllBILLS?Invtype=" + $("#ddlInvestmentType").val() + "&&BrokerID=number:" + $scope.DefaultData[0].BrokerId
             }).then(function (response1) {
                 $scope.BILLS = JSON.parse(response1.data);
-                
+
                 $scope.SaveBREntry.Demat_Ac_Id = $scope.DefaultData[0].DematId.toString();
                 //$scope.ddlHoldingType = $scope.DefaultData[0].HoldingTypeId;
                 $("#ddlHoldingType").val($scope.DefaultData[0].HoldingTypeId);
@@ -207,7 +229,7 @@ app.controller("myctrn", function ($scope, $http, $localStorage, $sessionStorage
                 $scope.ContractNoteId = $scope.DefaultData[0].FormatSr_No.toString();
                 $scope.SaveBREntry.Password = $scope.DefaultData[0].Password.toString();
                 $scope.ngclickDropdown();
-                
+
             }, function (data) {
                 //deferred.reject({ message: "Really bad" });
                 alert("Error Occur During This Request" + geturl);
@@ -223,16 +245,16 @@ app.controller("myctrn", function ($scope, $http, $localStorage, $sessionStorage
     $scope.Fn_SetAsDefaultSetting = function () {
         debugger;
         if ($scope.SaveBREntry.ChkSetAsDefault == true) {
-          
+
             var data_Index = {};
             data_Index.ddlInvestmentType = $scope.ddlInvestmentType;
             data_Index.ddlBroker = $scope.ddlBroker;
             try {
                 data_Index.Demat_Ac_Id = $scope.SaveBREntry.Demat_Ac_Id;
                 data_Index.ddlHoldingType = $("#ddlHoldingType").val();
-            } catch{
+            } catch {
             }
-            
+
             data_Index.ddlConsultant = $scope.ddlConsultant;
             data_Index.ContractNoteId = $scope.ContractNoteId;
             data_Index.Password = $scope.SaveBREntry.Password;
@@ -262,26 +284,26 @@ app.controller("myctrn", function ($scope, $http, $localStorage, $sessionStorage
 
     // New Function added By Poonam for Broker on 03 May 2022
 
-      $scope.FN_demat_with_broker = function () {
-    
+    $scope.FN_demat_with_broker = function () {
+
         if ($("#selectbrokerpopup").val() != "") {
 
             var VIEWMODEL = {};
             VIEWMODEL.ID = $("#selectbrokerpopup").val();
             VIEWMODEL.NAME = fnGetddlText("selectbrokerpopup");
-                  
+
             $scope.Brokers.push(VIEWMODEL);
 
             //NOT IN CASE
             for (var i = 0; i <= $scope.Info_Broker.length; i++) {
                 if ($("#selectbrokerpopup").val().split(':')[1] == $scope.Info_Broker[i].ID) {
-            
+
                     $scope.Info_Broker.splice(i, 1)
                     break;
                 }
 
             }
-           
+
             $("#selectbrokerpopup").select2();
         }
         else {
@@ -294,8 +316,8 @@ app.controller("myctrn", function ($scope, $http, $localStorage, $sessionStorage
 
 
     $scope.FN_demat = function () {
-      debugger;
-            if ($("#ddl_Single_demat").val() != "") {
+        debugger;
+        if ($("#ddl_Single_demat").val() != "") {
             var VIEWMODEL = {};
             VIEWMODEL.ID = $("#ddl_Single_demat").val();
             VIEWMODEL.NAME = fnGetddlText("ddl_Single_demat");
@@ -303,18 +325,18 @@ app.controller("myctrn", function ($scope, $http, $localStorage, $sessionStorage
             $scope.Demates.push(VIEWMODEL);
             for (var i = 0; i <= $scope.Info_Demate.length; i++) {
                 if ($("#ddl_Single_demat").val().split(':')[1] == $scope.Info_Demate[i].ID) {
-                 
-                   // $("#ddl_Single_demat").select2("val", "");
-                  
+
+                    // $("#ddl_Single_demat").select2("val", "");
+
                     $scope.Info_Demate.splice(i, 1)
                     break;
                 }
 
             }
-             
+
             $("#ddl_Single_demat").select2();
         }
-          else {
+        else {
             alert("Plase Select Demat..");
             $("#ddl_Single_demat").focus();
             return false;
@@ -323,7 +345,7 @@ app.controller("myctrn", function ($scope, $http, $localStorage, $sessionStorage
 
     }
 
-      $scope.AddConsultant = function () {
+    $scope.AddConsultant = function () {
         if ($("#ddl_Single_Consultant").val() != "") {
             var VIEWMODEL = {};
             VIEWMODEL.ID = $("#ddl_Single_Consultant").val();
@@ -332,35 +354,35 @@ app.controller("myctrn", function ($scope, $http, $localStorage, $sessionStorage
             $scope.Consultants.push(VIEWMODEL);
             for (var i = 0; i <= $scope.Info_Consultant.length; i++) {
                 if ($("#ddl_Single_Consultant").val().split(':')[1] == $scope.Info_Consultant[i].ID) {
-                 
-                   // $("#ddl_Single_demat").select2("val", "");
-                  
+
+                    // $("#ddl_Single_demat").select2("val", "");
+
                     $scope.Info_Consultant.splice(i, 1)
                     break;
                 }
 
             }
-             
+
             $("#ddl_Single_Consultant").select2();
         }
-          else {
+        else {
             alert("Plase Select Demat..");
             $("#ddl_Single_Consultant").focus();
             return false;
 
         }
-      
+
     }
     //End here    
-  
-   
+
+
     $scope.btn_click_sumit = function () {
         debugger;
         $scope.Fn_SetAsDefaultSetting();
-       
+
         $scope.btntext = "Please Wait.."
         $("#loader-1").show();
-      
+
         var text = fnGetddlText("ContractNoteId")
         $scope.SaveBREntry.ContractNoteName = text;
         $scope.SaveBREntry.ContractNoteId = $scope.ContractNoteId;
@@ -368,7 +390,7 @@ app.controller("myctrn", function ($scope, $http, $localStorage, $sessionStorage
         try {
             text = fnGetddlText("Demat_Ac_Id")
 
-        } catch{
+        } catch {
             text = "";
         }
 
@@ -385,21 +407,21 @@ app.controller("myctrn", function ($scope, $http, $localStorage, $sessionStorage
         $scope.SaveBREntry.Consultant = fnGetddlText("ddlConsultant");
         $scope.SaveBREntry.HoldingTypeCode = $("#ddlHoldingType").val();
         $scope.SaveBREntry.HoldingType = fnGetddlText("ddlHoldingType");
-         // var ListOfDemate = JSON.stringify($scope.Single_demats);
+        // var ListOfDemate = JSON.stringify($scope.Single_demats);
         $sessionStorage.SessionSaveBREntry = $scope.SaveBREntry;
         //fnPostDataUsingPostRequestWithModel("/BrokerBillEntry/SaveBREntry", "SaveBREntry", $scope, $http);
-        
+
         var DefaultValues = {};
         DefaultValues.Broker = $("#ddlBroker").val();
         DefaultValues.Demate = $("#Demat_Ac_Id").val();
         DefaultValues.Consultant = $("#ddlConsultant").val();
-        
+
         var ListOfBroker = JSON.stringify($scope.Brokers);
         var ListOfDemate = JSON.stringify($scope.Demates);
         var ListOfConsultant = JSON.stringify($scope.Consultants);
         var JsonDefaultValues = JSON.stringify(DefaultValues);
         //New Code Added by Poonam On 11 May 2022
-         var posturl = "/BrokerBillEntry/SetMultiConfiguration";
+        var posturl = "/BrokerBillEntry/SetMultiConfiguration";
         $http({
             method: "post",
             url: posturl,
