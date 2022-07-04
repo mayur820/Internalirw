@@ -161,7 +161,9 @@ app.controller("myctrn", function ($scope, $http, $localStorage, $sessionStorage
     }
 
     $("#ddlBroker").on("change", function () {
-        $scope.ddlBroker = $(this).val();
+        debugger;
+        $('#ddlBroker').select2('destroy');
+        $('#ddlBroker').val($(this).val()).select2();
         fnGetDataUsingGetRequestWithModel("/BrokerBillEntry/GetAllBILLS?Invtype=" + $("#ddlInvestmentType").val() + "&&BrokerID=" + $("#ddlBroker").val(), "BILLS", $scope, $http);
         $scope.BrokerOnchange();
     });
